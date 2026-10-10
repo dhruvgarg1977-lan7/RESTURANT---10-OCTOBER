@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Fresh favorites delivered to your door from Dhruv Restaurant." />
+  <title>Dhruv Restaurant — Good food, on its way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #20251f;
+      --muted: #777c73;
+      --green: #348653;
+      --green-dark: #256b40;
+      --cream: #ffffff;
+      --mint: #eaf4ed;
+      --line: #eee9e2;
+      --shadow: 0 18px 55px rgba(51, 41, 31, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+    .topbar { height: 84px; display: flex; align-items: center; border-bottom: 1px solid rgba(238, 233, 226, .75); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 800 23px Manrope, sans-serif; letter-spacing: -1.2px; white-space: nowrap; }
+    .brand-mark { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 13px; background: var(--green); color: white; font-size: 20px; transform: rotate(-5deg); }
+    .nav-links { display: flex; align-items: center; gap: 34px; margin-left: 30px; }
+    .nav-links a { text-decoration: none; color: #666b63; font-size: 14px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-right { display: flex; align-items: center; gap: 18px; }
+    .location { display: flex; align-items: center; gap: 8px; color: #60665e; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .location b { color: var(--ink); }
+    .cart { display: inline-flex; align-items: center; gap: 9px; background: var(--green); color: #fff; border: 0; border-radius: 14px; padding: 12px 16px; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .cart:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .cart-count { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: var(--green-dark); font-size: 11px; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; padding: 62px 0 74px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--green-dark); background: var(--mint); padding: 9px 13px; border-radius: 99px; font-size: 12px; font-weight: 800; letter-spacing: .2px; }
+    .eyebrow span { font-size: 15px; }
+    h1 { max-width: 570px; margin: 22px 0 18px; font: 800 clamp(46px, 5.4vw, 72px)/1.04 Manrope, sans-serif; letter-spacing: -4.7px; }
+    h1 em { color: var(--green); font-style: normal; }
+    .hero-copy { max-width: 455px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+    .hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 29px; }
+    .primary-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 23px; border: 0; border-radius: 15px; background: var(--green); color: white; text-decoration: none; font-size: 14px; font-weight: 800; box-shadow: 0 10px 22px rgba(52, 134, 83, .22); transition: transform .2s, background .2s; }
+    .primary-btn:hover { transform: translateY(-3px); background: var(--green-dark); }
+    .delivery-note { display: flex; align-items: center; gap: 9px; color: #73786f; font-size: 12px; font-weight: 600; }
+    .delivery-note strong { color: var(--ink); }
+    .avatar-stack { display: flex; align-items: center; margin-top: 37px; }
+    .avatar { width: 35px; height: 35px; display: grid; place-items: center; margin-left: -8px; border: 3px solid var(--cream); border-radius: 50%; background: #efd2bd; font-size: 17px; }
+    .avatar:first-child { margin-left: 0; background: #f3c6b0; }
+    .avatar:nth-child(2) { background: #d8e3c4; }
+    .avatar:nth-child(3) { background: #e9c5ce; }
+    .avatar:nth-child(4) { background: #f4dba5; }
+    .review-copy { margin-left: 11px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .review-copy strong { display: block; color: var(--ink); font-size: 12px; }
+    .hero-art { position: relative; min-height: 425px; display: grid; place-items: center; }
+    .hero-art::before { content: ''; position: absolute; width: min(440px, 90%); aspect-ratio: 1; border-radius: 50%; background: var(--mint); }
+    .hero-photo { position: relative; z-index: 1; width: min(435px, 95%); aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 12px solid rgba(255,255,255,.82); box-shadow: var(--shadow); }
+    .float-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: 11px; padding: 13px 16px; border: 1px solid rgba(255,255,255,.8); border-radius: 17px; background: rgba(255,255,255,.94); box-shadow: 0 12px 35px rgba(51, 41, 31, .12); backdrop-filter: blur(12px); }
+    .float-card .icon { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 13px; background: var(--mint); font-size: 20px; }
+    .float-card strong { display: block; font-size: 13px; }
+    .float-card small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .rating-card { top: 55px; left: -4px; }
+    .time-card { right: -2px; bottom: 63px; }
+    .rating-stars { color: #f3a93e; font-size: 12px; letter-spacing: 1px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 25px; }
+    .section-kicker { color: var(--green-dark); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; }
+    h2 { margin: 7px 0 0; font: 800 30px/1.2 Manrope, sans-serif; letter-spacing: -1.3px; }
+    .see-all { color: var(--green-dark); text-decoration: none; font-size: 13px; font-weight: 800; white-space: nowrap; }
+    .see-all:hover { text-decoration: underline; }
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 23px; }
+    .filter { border: 1px solid var(--line); border-radius: 99px; background: white; color: #73786f; padding: 10px 16px; font-size: 12px; font-weight: 700; transition: all .2s; }
+    .filter:hover, .filter.active { border-color: var(--green); background: var(--green); color: white; }
+    .food-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 19px; }
+    .food-card { overflow: hidden; border: 1px solid #f0ebe4; border-radius: 20px; background: white; transition: transform .25s, box-shadow .25s; }
+    .food-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .food-image-wrap { position: relative; height: 180px; overflow: hidden; background: #f2eee8; }
+    .food-image { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .4s; }
+    .food-card:hover .food-image { transform: scale(1.05); }
+    .food-tag { position: absolute; top: 12px; left: 12px; border-radius: 99px; background: white; padding: 7px 10px; color: #535a51; font-size: 10px; font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,.07); }
+    .heart { position: absolute; top: 11px; right: 11px; width: 32px; height: 32px; display: grid; place-items: center; border: 0; border-radius: 50%; background: white; color: #7f817b; font-size: 16px; }
+    .heart:hover, .heart.liked { color: var(--green); }
+    .food-info { padding: 15px 15px 14px; }
+    .food-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .food-title { margin: 0; font: 800 15px Manrope, sans-serif; letter-spacing: -.3px; }
+    .food-rating { color: #d58a18; font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .food-meta { margin: 7px 0 15px; color: #858980; font-size: 11px; }
+    .food-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f2eee9; padding-top: 12px; }
+    .price { font: 800 16px Manrope, sans-serif; }
+    .price small { color: #8e918a; font: 500 10px 'DM Sans', sans-serif; }
+    .add-btn { width: 32px; height: 32px; border: 0; border-radius: 11px; background: var(--mint); color: var(--green-dark); font-size: 21px; font-weight: 500; line-height: 1; transition: background .2s, color .2s; }
+    .add-btn:hover { background: var(--green); color: white; }
+    .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 69px 0 74px; padding: 27px 31px; border: 1px solid #e3eee6; border-radius: 20px; background: #f5faf6; }
+    .perk { display: flex; align-items: center; gap: 13px; }
+    .perk-icon { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: 14px; background: white; font-size: 21px; }
+    .perk strong { display: block; font: 800 13px Manrope, sans-serif; }
+    .perk span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    footer { border-top: 1px solid var(--line); padding: 27px 0; color: var(--muted); font-size: 12px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .footer-brand { font: 800 16px Manrope, sans-serif; color: var(--ink); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: inherit; text-decoration: none; }
+    .footer-links a:hover { color: var(--green-dark); }
+    .toast { position: fixed; left: 50%; bottom: 24px; z-index: 5; padding: 13px 18px; border-radius: 13px; background: var(--ink); color: white; font-size: 13px; font-weight: 700; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translate(-50%, 12px); transition: all .25s; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    @media (max-width: 900px) {
+      .nav-links { gap: 18px; margin-left: 0; }
+      .location { display: none; }
+      .hero { gap: 25px; }
+      .hero-art { min-height: 360px; }
+      .food-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 32px, 460px); }
+      .topbar { height: 70px; }
+      .nav { gap: 10px; }
+      .brand { font-size: 20px; }
+      .brand-mark { width: 33px; height: 33px; }
+      .nav-links { display: none; }
+      .cart { padding: 10px 12px; }
+      .hero { grid-template-columns: 1fr; gap: 8px; padding: 43px 0 52px; }
+      h1 { max-width: 470px; margin-top: 17px; font-size: clamp(46px, 13vw, 65px); letter-spacing: -3.5px; }
+      .hero-copy { font-size: 14px; }
+      .hero-art { min-height: 330px; margin-top: 18px; }
+      .hero-photo { width: min(320px, 83vw); }
+      .hero-art::before { width: min(325px, 85vw); }
+      .rating-card { left: 0; top: 27px; }
+      .time-card { right: 0; bottom: 31px; }
+      .float-card { padding: 10px 12px; }
+      .float-card .icon { width: 34px; height: 34px; }
+      h2 { font-size: 26px; }
+      .section-head { align-items: center; }
+      .food-grid { gap: 12px; }
+      .food-image-wrap { height: 140px; }
+      .food-info { padding: 12px; }
+      .food-title { font-size: 13px; }
+      .food-meta { font-size: 10px; }
+      .food-rating { font-size: 10px; }
+      .perks { grid-template-columns: 1fr; gap: 17px; margin: 47px 0; padding: 22px; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 380px) {
+      .food-grid { grid-template-columns: 1fr; }
+      .food-image-wrap { height: 190px; }
+      .delivery-note { display: none; }
+      .hero-actions { margin-top: 23px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Dhruv Restaurant home"><span class="brand-mark">✳</span> Dhruv Restaurant</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Explore food</a>
+        <a href="#perks">How it works</a>
+      </div>
+      <div class="nav-right">
+        <div class="location"><span>📍</span><span>Deliver to <b>Brooklyn, NY</b></span></div>
+        <button class="cart" id="cartButton" aria-label="Shopping cart, 0 items"><span>🛍</span> Cart <span class="cart-count" id="cartCount">0</span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-content">
+        <div class="eyebrow"><span>✦</span> YOUR NEXT FAVORITE MEAL</div>
+        <h1>Good food.<br />Good mood.<br /><em>On its way.</em></h1>
+        <p class="hero-copy">Craving something delicious? Discover the best local spots and get the good stuff delivered fresh to your door.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#menu">Explore the menu <span>→</span></a>
+          <div class="delivery-note"><span>⚡</span><span><strong>Fast delivery</strong><br />at your doorstep</span></div>
+        </div>
+        <div class="avatar-stack" aria-label="Loved by 2,000 happy foodies">
+          <span class="avatar">👩🏽</span><span class="avatar">👨🏻</span><span class="avatar">👩🏼</span><span class="avatar">👨🏾</span>
+          <div class="review-copy"><strong>2,000+ happy foodies</strong>and counting</div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Fresh meal ready for delivery">
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Colorful fresh salad bowl" />
+        <div class="float-card rating-card"><span class="icon">⭐</span><div><strong>Top rated</strong><small><span class="rating-stars">★★★★★</span> &nbsp;4.9 / 5</small></div></div>
+        <div class="float-card time-card"><span class="icon">🛵</span><div><strong>At your door</strong><small>In about 20–30 min</small></div></div>
+      </div>
+    </section>
+
+    <section class="container" id="menu">
+      <div class="section-head">
+        <div><div class="section-kicker">Handpicked for you</div><h2>Popular right now</h2></div>
+        <a class="see-all" href="#menu">See full menu <span>→</span></a>
+      </div>
+      <div class="filters" role="group" aria-label="Filter dishes">
+        <button class="filter active" data-filter="all">🍽️ &nbsp;All dishes</button>
+        <button class="filter" data-filter="pizza">🍕 &nbsp;Pizza</button>
+        <button class="filter" data-filter="healthy">🥗 &nbsp;Healthy</button>
+        <button class="filter" data-filter="burger">🍔 &nbsp;Burgers</button>
+        <button class="filter" data-filter="sushi">🍣 &nbsp;Sushi</button>
+      </div>
+      <div class="food-grid" id="foodGrid">
+        <article class="food-card" data-category="pizza">
+          <div class="food-image-wrap"><img class="food-image" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80" alt="Freshly baked margherita pizza" /><span class="food-tag">Bestseller</span><button class="heart" aria-label="Add Margherita pizza to favorites">♡</button></div>
+          <div class="food-info"><div class="food-title-row"><h3 class="food-title">Margherita Pizza</h3><span class="food-rating">★ 4.9</span></div><p class="food-meta">Stone-baked · Italian</p><div class="food-bottom"><div class="price">$14.50 <small>· 25 min</small></div><button class="add-btn" aria-label="Add Margherita pizza to cart">+</button></div></div>
+        </article>
+        <article class="food-card" data-category="burger">
+          <div class="food-image-wrap"><img class="food-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="Juicy cheeseburger with fresh toppings" /><span class="food-tag">Fan favorite</span><button class="heart" aria-label="Add House cheeseburger to favorites">♡</button></div>
+          <div class="food-info"><div class="food-title-row"><h3 class="food-title">House Cheeseburger</h3><span class="food-rating">★ 4.8</span></div><p class="food-meta">Angus beef · American</p><div class="food-bottom"><div class="price">$12.00 <small>· 20 min</small></div><button class="add-btn" aria-label="Add House cheeseburger to cart">+</button></div></div>
+        </article>
+        <article class="food-card" data-category="healthy">
+          <div class="food-image-wrap"><img class="food-image" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80" alt="Fresh green salad with vegetables" /><span class="food-tag">Fresh pick</span><button class="heart" aria-label="Add Green goddess bowl to favorites">♡</button></div>
+          <div class="food-info"><div class="food-title-row"><h3 class="food-title">Green Goddess Bowl</h3><span class="food-rating">★ 4.9</span></div><p class="food-meta">Avocado · Vegan</p><div class="food-bottom"><div class="price">$11.50 <small>· 15 min</small></div><button class="add-btn" aria-label="Add Green goddess bowl to cart">+</button></div></div>
+        </article>
+        <article class="food-card" data-category="sushi">
+          <div class="food-image-wrap"><img class="food-image" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=700&q=80" alt="Assorted fresh sushi rolls" /><span class="food-tag">Chef's pick</span><button class="heart" aria-label="Add Salmon sushi set to favorites">♡</button></div>
+          <div class="food-info"><div class="food-title-row"><h3 class="food-title">Salmon Sushi Set</h3><span class="food-rating">★ 5.0</span></div><p class="food-meta">Wild salmon · Japanese</p><div class="food-bottom"><div class="price">$16.00 <small>· 30 min</small></div><button class="add-btn" aria-label="Add Salmon sushi set to cart">+</button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="perks container" id="perks" aria-label="Why order with Dhruv Restaurant">
+      <div class="perk"><span class="perk-icon">🥬</span><div><strong>Fresh, always</strong><span>Quality ingredients from local kitchens</span></div></div>
+      <div class="perk"><span class="perk-icon">🚀</span><div><strong>Quick to your door</strong><span>Real-time delivery, no long waits</span></div></div>
+      <div class="perk"><span class="perk-icon">💚</span><div><strong>Made with care</strong><span>Good food from people who love food</span></div></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-row"><div><span class="footer-brand">✳ Dhruv Restaurant</span> &nbsp; · &nbsp; Good food, good mood.</div><div class="footer-links"><a href="#menu">Menu</a><a href="#perks">About</a><a href="mailto:hello@dhruvrestaurant.example">Contact</a></div><div>© 2026 Dhruv Restaurant</div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">Added to your cart!</div>
+
+  <script>
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.food-card');
+    const count = document.getElementById('cartCount');
+    const cartButton = document.getElementById('cartButton');
+    const toast = document.getElementById('toast');
+    let cartCount = 0;
+    let toastTimer;
+
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        filters.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.dataset.filter;
+        cards.forEach((card) => {
+          card.hidden = category !== 'all' && card.dataset.category !== category;
+        });
+      });
+    });
+
+    document.querySelectorAll('.add-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        cartCount += 1;
+        count.textContent = cartCount;
+        cartButton.setAttribute('aria-label', `Shopping cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`);
+        const itemName = button.closest('.food-card').querySelector('.food-title').textContent;
+        toast.textContent = `${itemName} added to your cart!`;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+      });
+    });
+
+    document.querySelectorAll('.heart').forEach((button) => {
+      button.addEventListener('click', () => {
+        const liked = button.classList.toggle('liked');
+        button.textContent = liked ? '♥' : '♡';
+        button.setAttribute('aria-pressed', liked);
+      });
+    });
+  </script>
+</body>
+</html>
