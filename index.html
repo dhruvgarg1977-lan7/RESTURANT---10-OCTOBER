@@ -130,6 +130,11 @@
     .perk-icon { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: 14px; background: white; font-size: 21px; }
     .perk strong { display: block; font: 800 13px Manrope, sans-serif; }
     .perk span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .contact-section { padding-bottom: 63px; }
+    .contact-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .contact-label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    .contact-details address, .contact-details a { color: var(--ink); font-size: 15px; font-style: normal; font-weight: 700; text-decoration: none; }
+    .contact-details a:hover { color: var(--green-dark); text-decoration: underline; }
     footer { border-top: 1px solid var(--line); padding: 27px 0; color: var(--muted); font-size: 12px; }
     .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
     .footer-brand { font: 800 16px Manrope, sans-serif; color: var(--ink); }
@@ -167,6 +172,7 @@
       h2 { font-size: 26px; }
       .section-head { align-items: center; }
       .food-grid { gap: 12px; }
+      .contact-details { grid-template-columns: 1fr; gap: 18px; }
       .food-image-wrap { height: 140px; }
       .food-info { padding: 12px; }
       .food-title { font-size: 13px; }
@@ -294,9 +300,17 @@
       <div class="perk"><span class="perk-icon">🚀</span><div><strong>Quick to your door</strong><span>Real-time delivery, no long waits</span></div></div>
       <div class="perk"><span class="perk-icon">💚</span><div><strong>Made with care</strong><span>Good food from people who love food</span></div></div>
     </section>
+
+    <section class="contact-section container" id="contact" aria-labelledby="contactTitle">
+      <div class="section-head"><div><div class="section-kicker">Get in touch</div><h2 id="contactTitle">Contact</h2></div></div>
+      <div class="contact-details">
+        <div><span class="contact-label">Address</span><address>Jorawar Singh Gate</address></div>
+        <div><span class="contact-label">Phone</span><a href="tel:8278666213">8278666213</a></div>
+      </div>
+    </section>
   </main>
 
-  <footer><div class="container footer-row"><div><span class="footer-brand">✳ Dhruv Restaurant</span> &nbsp; · &nbsp; Good food, good mood.</div><div class="footer-links"><a href="#menu">Menu</a><a href="#perks">About</a><a href="mailto:hello@dhruvrestaurant.example">Contact</a></div><div>© 2026 Dhruv Restaurant</div></div></footer>
+  <footer><div class="container footer-row"><div><span class="footer-brand">✳ Dhruv Restaurant</span> &nbsp; · &nbsp; Good food, good mood.</div><div class="footer-links"><a href="#menu">Menu</a><a href="#perks">About</a><a href="#contact">Contact</a></div><div>© 2026 Dhruv Restaurant</div></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite">Added to your cart!</div>
 
   <script>
