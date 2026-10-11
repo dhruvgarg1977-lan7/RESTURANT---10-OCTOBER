@@ -36,9 +36,10 @@
     .nav-right { display: flex; align-items: center; gap: 18px; }
     .location { display: flex; align-items: center; gap: 8px; color: #60665e; font-size: 13px; font-weight: 600; white-space: nowrap; }
     .location b { color: var(--ink); }
-    .cart { display: inline-flex; align-items: center; gap: 9px; background: var(--green); color: #fff; border: 0; border-radius: 14px; padding: 12px 16px; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .cart { display: inline-flex; align-items: center; gap: 9px; background: var(--green); color: #fff; border: 0; border-radius: 14px; padding: 12px 16px; color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
     .cart:hover { background: var(--green-dark); transform: translateY(-2px); }
     .cart-count { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: var(--green-dark); font-size: 11px; }
+    [hidden] { display: none !important; }
     .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; padding: 62px 0 74px; }
     .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--green-dark); background: var(--mint); padding: 9px 13px; border-radius: 99px; font-size: 12px; font-weight: 800; letter-spacing: .2px; }
     .eyebrow span { font-size: 15px; }
@@ -95,6 +96,35 @@
     .price small { color: #8e918a; font: 500 10px 'DM Sans', sans-serif; }
     .add-btn { width: 32px; height: 32px; border: 0; border-radius: 11px; background: var(--mint); color: var(--green-dark); font-size: 21px; font-weight: 500; line-height: 1; transition: background .2s, color .2s; }
     .add-btn:hover { background: var(--green); color: white; }
+    .cart-page { min-height: calc(100vh - 140px); padding: 54px 0 76px; }
+    .cart-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+    .cart-heading h1 { margin: 7px 0 5px; font: 800 42px/1.1 Manrope, sans-serif; letter-spacing: -2px; }
+    .cart-page-count { margin: 0; color: var(--muted); font-size: 13px; }
+    .cart-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; align-items: start; gap: 36px; margin-top: 34px; }
+    .cart-items { border-top: 1px solid var(--line); }
+    .cart-item { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .cart-item-image { width: 92px; height: 92px; display: block; border-radius: 8px; object-fit: cover; background: #f2eee8; }
+    .cart-item-name { margin: 0; font: 800 15px Manrope, sans-serif; }
+    .cart-item-meta { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .cart-item-unit-price { margin: 8px 0 0; font-size: 13px; font-weight: 700; }
+    .cart-item-controls { display: flex; align-items: center; justify-content: flex-end; gap: 15px; }
+    .quantity-control { display: inline-flex; align-items: center; gap: 12px; padding: 4px; border: 1px solid var(--line); border-radius: 8px; }
+    .quantity-control button { width: 28px; height: 28px; border: 0; border-radius: 5px; background: var(--mint); color: var(--green-dark); font-size: 17px; }
+    .quantity-value { min-width: 16px; text-align: center; font-size: 13px; font-weight: 700; }
+    .cart-item-total { min-width: 68px; text-align: right; font: 800 14px Manrope, sans-serif; }
+    .remove-item { border: 0; background: none; color: var(--muted); padding: 5px 0; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+    .remove-item:hover { color: #a13e35; }
+    .cart-summary { padding: 23px; border: 1px solid var(--line); border-radius: 8px; }
+    .cart-summary h2 { margin: 0 0 20px; font-size: 19px; letter-spacing: -.4px; }
+    .summary-row { display: flex; justify-content: space-between; gap: 15px; margin: 13px 0; color: var(--muted); font-size: 13px; }
+    .summary-row strong { color: var(--ink); font-weight: 700; }
+    .summary-total { margin-top: 18px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--ink); font-size: 15px; font-weight: 800; }
+    .checkout-button { width: 100%; margin-top: 17px; }
+    .checkout-button:disabled { cursor: not-allowed; opacity: .55; }
+    .cart-empty { padding: 76px 20px; text-align: center; }
+    .cart-empty-icon { font-size: 35px; }
+    .cart-empty h2 { margin-top: 15px; font-size: 24px; }
+    .cart-empty p { margin: 9px 0 22px; color: var(--muted); font-size: 14px; }
     .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 69px 0 74px; padding: 27px 31px; border: 1px solid #e3eee6; border-radius: 20px; background: #f5faf6; }
     .perk { display: flex; align-items: center; gap: 13px; }
     .perk-icon { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: 14px; background: white; font-size: 21px; }
@@ -114,6 +144,7 @@
       .hero { gap: 25px; }
       .hero-art { min-height: 360px; }
       .food-grid { grid-template-columns: repeat(2, 1fr); }
+      .cart-layout { grid-template-columns: 1fr; gap: 25px; }
     }
     @media (max-width: 620px) {
       .container { width: min(100% - 32px, 460px); }
@@ -141,6 +172,14 @@
       .food-title { font-size: 13px; }
       .food-meta { font-size: 10px; }
       .food-rating { font-size: 10px; }
+      .cart-page { padding: 36px 0 54px; }
+      .cart-heading { align-items: flex-start; flex-direction: column; }
+      .cart-heading h1 { font-size: 36px; }
+      .cart-item { grid-template-columns: 68px minmax(0, 1fr); gap: 12px; }
+      .cart-item-image { width: 68px; height: 68px; }
+      .cart-item-controls { grid-column: 2; justify-content: space-between; }
+      .cart-item-total { min-width: auto; }
+      .cart-summary { padding: 20px; }
       .perks { grid-template-columns: 1fr; gap: 17px; margin: 47px 0; padding: 22px; }
       .footer-row { flex-direction: column; align-items: flex-start; }
     }
@@ -163,12 +202,35 @@
       </div>
       <div class="nav-right">
         <div class="location"><span>📍</span><span>Deliver to <b>Brooklyn, NY</b></span></div>
-        <button class="cart" id="cartButton" aria-label="Shopping cart, 0 items"><span>🛍</span> Cart <span class="cart-count" id="cartCount">0</span></button>
+        <a class="cart" id="cartButton" href="#cart" aria-label="Shopping cart, 0 items"><span>🛍</span> Cart <span class="cart-count" id="cartCount">0</span></a>
       </div>
     </nav>
   </header>
 
   <main>
+    <section class="cart-page container" id="cartPage" hidden>
+      <div class="cart-heading">
+        <div><div class="section-kicker">Your order</div><h1>Your cart</h1><p class="cart-page-count" id="cartPageCount">0 items</p></div>
+        <a class="see-all" href="#menu">← Continue shopping</a>
+      </div>
+      <div class="cart-layout" id="cartLayout" hidden>
+        <div class="cart-items" id="cartItems" aria-live="polite"></div>
+        <aside class="cart-summary" aria-label="Order summary">
+          <h2>Order summary</h2>
+          <div class="summary-row"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+          <div class="summary-row"><span>Delivery</span><strong id="cartDelivery">$0.00</strong></div>
+          <div class="summary-row summary-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+          <button class="primary-btn checkout-button" id="checkoutButton" type="button" disabled>Checkout</button>
+        </aside>
+      </div>
+      <div class="cart-empty" id="cartEmpty" hidden>
+        <div class="cart-empty-icon" aria-hidden="true">🛍</div>
+        <h2>Your cart is empty</h2>
+        <p>Find something delicious to get started.</p>
+        <a class="primary-btn" href="#menu">Explore the menu <span>→</span></a>
+      </div>
+    </section>
+
     <section class="hero container" id="home">
       <div class="hero-content">
         <div class="eyebrow"><span>✦</span> YOUR NEXT FAVORITE MEAL</div>
@@ -242,9 +304,139 @@
     const cards = document.querySelectorAll('.food-card');
     const count = document.getElementById('cartCount');
     const cartButton = document.getElementById('cartButton');
+    const cartPage = document.getElementById('cartPage');
+    const homeSections = document.querySelectorAll('main > section:not(#cartPage)');
+    const cartItemsElement = document.getElementById('cartItems');
+    const cartLayout = document.getElementById('cartLayout');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const cartPageCount = document.getElementById('cartPageCount');
+    const cartSubtotal = document.getElementById('cartSubtotal');
+    const cartDelivery = document.getElementById('cartDelivery');
+    const cartTotal = document.getElementById('cartTotal');
+    const checkoutButton = document.getElementById('checkoutButton');
     const toast = document.getElementById('toast');
-    let cartCount = 0;
+    const cartStorageKey = 'dhruvRestaurantCart';
+    const deliveryFee = 2.5;
+    const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
     let toastTimer;
+
+    function loadCart() {
+      try {
+        const savedItems = JSON.parse(localStorage.getItem(cartStorageKey) || '[]');
+        return new Map(savedItems
+          .filter((item) => item && typeof item.name === 'string' && Number.isFinite(item.price) && Number.isInteger(item.quantity) && item.quantity > 0)
+          .map((item) => [item.name, item]));
+      } catch {
+        return new Map();
+      }
+    }
+
+    const cartItems = loadCart();
+
+    function saveCart() {
+      try {
+        localStorage.setItem(cartStorageKey, JSON.stringify([...cartItems.values()]));
+      } catch {
+        showToast('Your browser could not save the cart.');
+      }
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function updateCartBadge() {
+      const itemCount = [...cartItems.values()].reduce((total, item) => total + item.quantity, 0);
+      count.textContent = itemCount;
+      cartButton.setAttribute('aria-label', `Shopping cart, ${itemCount} ${itemCount === 1 ? 'item' : 'items'}`);
+    }
+
+    function renderCart() {
+      const items = [...cartItems.values()];
+      const itemCount = items.reduce((total, item) => total + item.quantity, 0);
+      const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
+      const delivery = items.length ? deliveryFee : 0;
+
+      updateCartBadge();
+      cartPageCount.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
+      cartLayout.hidden = items.length === 0;
+      cartEmpty.hidden = items.length > 0;
+      checkoutButton.disabled = items.length === 0;
+      cartSubtotal.textContent = currency.format(subtotal);
+      cartDelivery.textContent = currency.format(delivery);
+      cartTotal.textContent = currency.format(subtotal + delivery);
+      cartItemsElement.replaceChildren();
+
+      items.forEach((item) => {
+        const row = document.createElement('article');
+        row.className = 'cart-item';
+
+        const image = document.createElement('img');
+        image.className = 'cart-item-image';
+        image.src = item.image;
+        image.alt = item.name;
+
+        const details = document.createElement('div');
+        const name = document.createElement('h3');
+        name.className = 'cart-item-name';
+        name.textContent = item.name;
+        const description = document.createElement('p');
+        description.className = 'cart-item-meta';
+        description.textContent = item.description;
+        const unitPrice = document.createElement('p');
+        unitPrice.className = 'cart-item-unit-price';
+        unitPrice.textContent = currency.format(item.price);
+        details.append(name, description, unitPrice);
+
+        const controls = document.createElement('div');
+        controls.className = 'cart-item-controls';
+        const quantityControl = document.createElement('div');
+        quantityControl.className = 'quantity-control';
+        const decreaseButton = document.createElement('button');
+        decreaseButton.type = 'button';
+        decreaseButton.dataset.cartAction = 'decrease';
+        decreaseButton.dataset.productName = item.name;
+        decreaseButton.setAttribute('aria-label', `Decrease ${item.name} quantity`);
+        decreaseButton.textContent = '−';
+        const quantity = document.createElement('span');
+        quantity.className = 'quantity-value';
+        quantity.textContent = item.quantity;
+        const increaseButton = document.createElement('button');
+        increaseButton.type = 'button';
+        increaseButton.dataset.cartAction = 'increase';
+        increaseButton.dataset.productName = item.name;
+        increaseButton.setAttribute('aria-label', `Increase ${item.name} quantity`);
+        increaseButton.textContent = '+';
+        quantityControl.append(decreaseButton, quantity, increaseButton);
+
+        const lineTotal = document.createElement('span');
+        lineTotal.className = 'cart-item-total';
+        lineTotal.textContent = currency.format(item.price * item.quantity);
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'remove-item';
+        removeButton.dataset.cartAction = 'remove';
+        removeButton.dataset.productName = item.name;
+        removeButton.textContent = 'Remove';
+        removeButton.setAttribute('aria-label', `Remove ${item.name} from cart`);
+        controls.append(quantityControl, lineTotal, removeButton);
+
+        row.append(image, details, controls);
+        cartItemsElement.append(row);
+      });
+    }
+
+    function renderPage() {
+      const showingCart = window.location.hash === '#cart';
+      cartPage.hidden = !showingCart;
+      homeSections.forEach((section) => {
+        section.hidden = showingCart;
+      });
+      if (showingCart) renderCart();
+    }
 
     filters.forEach((button) => {
       button.addEventListener('click', () => {
@@ -259,15 +451,41 @@
 
     document.querySelectorAll('.add-btn').forEach((button) => {
       button.addEventListener('click', () => {
-        cartCount += 1;
-        count.textContent = cartCount;
-        cartButton.setAttribute('aria-label', `Shopping cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`);
-        const itemName = button.closest('.food-card').querySelector('.food-title').textContent;
-        toast.textContent = `${itemName} added to your cart!`;
-        toast.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+        const card = button.closest('.food-card');
+        const name = card.querySelector('.food-title').textContent;
+        const priceMatch = card.querySelector('.price').textContent.match(/\$([\d.]+)/);
+        if (!priceMatch) return;
+
+        const item = cartItems.get(name) || {
+          name,
+          description: card.querySelector('.food-meta').textContent,
+          image: card.querySelector('.food-image').getAttribute('src'),
+          price: Number(priceMatch[1]),
+          quantity: 0
+        };
+        item.quantity += 1;
+        cartItems.set(name, item);
+        saveCart();
+        renderCart();
+        showToast(`${name} added to your cart!`);
       });
+    });
+
+    cartItemsElement.addEventListener('click', (event) => {
+      const actionButton = event.target.closest('button[data-cart-action]');
+      if (!actionButton) return;
+
+      const item = cartItems.get(actionButton.dataset.productName);
+      if (!item) return;
+      if (actionButton.dataset.cartAction === 'increase') item.quantity += 1;
+      if (actionButton.dataset.cartAction === 'decrease') item.quantity -= 1;
+      if (actionButton.dataset.cartAction === 'remove' || item.quantity <= 0) cartItems.delete(item.name);
+      saveCart();
+      renderCart();
+    });
+
+    checkoutButton.addEventListener('click', () => {
+      if (!checkoutButton.disabled) showToast('Online checkout is not available yet.');
     });
 
     document.querySelectorAll('.heart').forEach((button) => {
@@ -277,6 +495,10 @@
         button.setAttribute('aria-pressed', liked);
       });
     });
+
+    window.addEventListener('hashchange', renderPage);
+    renderCart();
+    renderPage();
   </script>
 </body>
 </html>
